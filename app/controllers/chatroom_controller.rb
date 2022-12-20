@@ -32,7 +32,7 @@ def message_render (msg)
     @body=msg.body
     @datetime=msg.send_date
     
-    render(partial: 'layouts/messages')
+    render(partial: "layouts/messages")
     #render(partial: 'layouts/messages', locals: {message: @msg})
 end
 
