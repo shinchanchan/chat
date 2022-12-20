@@ -1,0 +1,124 @@
+<style>
+.chatbox {
+  height: 450px;
+   margin-left: 80px;
+}
+
+#messages{
+    height: 18em;
+    overflow: auto;
+}
+
+#online{
+ overflow: auto;
+}
+
+.grid.container {
+  margin-top: 5em;
+}
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+
+.container-mess {
+  border: 2px solid #dedede;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+  height: 60px;
+}
+
+.time-right {
+  float: right;
+  color: #aaa;
+}
+
+.container-mess::after {
+  content: "";
+  clear: both;
+  display: table;
+  height: 50px;
+}
+
+</style>
+
+
+<h2 class="ui center aligned icon header">
+  <i class="circular  brown users icon"></i>
+  Friends
+</h2>
+
+
+
+
+<div class="ui two column grid"> 
+<div class="ten wide column"> 
+<div class="ui fluid raised card chatbox">
+
+  <div class="content" id="messages">
+
+    <div class="ui feed" id="message-container">
+
+        <% @message.each do | msg | %>
+        <div class="event">
+            <div class="content">
+              <div class="summary">
+                <div class="container-mess">
+                  <i class="circular  brown male icon"></i>
+                  <em> <%= msg.body %> </em>
+                  <span class="time-right"> <p style="color:red;" > <%= msg.user.username %> </p> <p style="color:green;" > <%= msg.send_date %></p> </span>
+</div>
+                </div>
+            </div>
+        </div>  
+      <% end %>
+    </div>
+    </div>
+    <div class="extra content">
+
+
+      <%= form_tag("/chatroom/index", html: {class: "ui reply form", role: "form"}, :id =>"form1" , :method => "post",  :remote => true  ) do %>
+               <div class="field">
+                 <div class="ui fluid icon input">
+                   <input type="text" id="body" name="body"  value="">
+
+<%= button_tag( :class => "button_green") do %>
+   <i class="bordered inverted orange edit icon"></i>
+<% end %>
+              </div>
+        </div>
+<% end %>
+</div>
+</div>
+
+</div>
+
+
+<div class="four wide column">
+<div class="ui raised card chatbox">
+  <div class="content" id="online" >
+    <a href="#" class="btn btn-info btn-lg">
+    <h2 class="ui center aligned icon">
+  <i class="circular green street view icon"></i>
+  Online
+        </a>
+</h2>
+      <div class="ui center aligned inverted vertical menu" id="active-container">
+        <% @active.map do | act | %>
+           <a class="item">
+                  <em> <%= act.username %> </em>
+            </a> 
+              <% end %>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>

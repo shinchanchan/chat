@@ -1,0 +1,54 @@
+<html>
+
+<head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" rel="stylesheet"/>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"> </script>
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"> </script>
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous">   </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"> </script>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" rel="stylesheet" />
+        
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico"> 
+  </head>
+
+
+<body>
+  
+
+  <div class="ui inverted massive menu">
+  <div class="ui container">
+      <%= link_to "chatroom", root_path, class: "item" %>
+      <a class="item">
+        Messages
+      </a>
+      <div class="right menu">
+        <div class="ui dropdown item">
+          Account <i class="dropdown icon"></i>
+          <div class="menu">
+            <% if @check === nil %>
+              <% @a=1 %>
+              <%= link_to "Log out", "/sessions/logout", class:  "item" %>
+            <% end %>
+          </div>
+        </div>
+        <% if @a != 1 %>
+        <div class="item">
+            <%= link_to "Log in", "chatroom/index", class: "ui primary button" %>
+        </div>
+        <% end %>
+        
+    </div>
+  </div>
+</div>
+<script>
+$(".ui.dropdown").dropdown();
+</script>
+<%= render 'layouts/messages' %>
+    <%= yield %>
+   
+  </body>
+  </html>

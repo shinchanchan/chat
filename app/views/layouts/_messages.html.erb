@@ -1,0 +1,23 @@
+
+
+<% if @body != nil %>
+<div class="event">
+            <div class="content">
+              <div class="summary">
+
+ <div class="container-mess">
+                  <i class="circular green street view icon"></i>
+                  <em> <%= @body %> </em>
+                  <span class="time-right"> <p style="color:red;" > <%= @user %> </p> <p style="color:green;" > <%= @datetime %></p> </span>
+</div>
+
+
+              </div>
+            </div>
+</div>
+<% end %>
+
+<script>
+  document.getElementById("form1").reset();
+</script>
+
